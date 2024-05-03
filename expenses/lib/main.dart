@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:ffi';
+
 import 'package:expenses/models/Transaction.dart';
 import 'package:flutter/material.dart';
 
@@ -51,31 +53,46 @@ class MyHomePage extends StatelessWidget {
                 child: Row(
                   children: [
                     Container(
-                      margin: EdgeInsets.symmetric(
-                        horizontal: 15,
-                        vertical: 10
-                      ),
+                      margin:
+                          EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                       decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.black,
+                          border: Border.all(
+                          color: Colors.purple,
                           width: 2,
-                        )
-                      ),
+                      )),
                       padding: EdgeInsets.all(10),
                       child: Text(
                         tr.value.toString(),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.purple,
+                        ),
                       ),
                     ),
                     Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(tr.title),
-                        Text(tr.date.toString()),
+                        Text(
+                          tr.title,
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                        Text(
+                          tr.date.toString(),
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 100, 100, 100),
+                          ),
+                        ),
                       ],
                     )
                   ],
                 ),
               );
-            }).toList(),            
+            }).toList(),
           ),
         ],
       ),
