@@ -4,7 +4,6 @@ import 'package:expenses/Utilitarios.dart';
 import 'package:expenses/models/Transaction.dart';
 import 'package:flutter/material.dart';
 
-
 main() => runApp(ExpensesApp());
 
 class ExpensesApp extends StatelessWidget {
@@ -38,7 +37,6 @@ class MyHomePage extends StatelessWidget {
         title: Text("Despesas pessoais"),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
@@ -57,8 +55,8 @@ class MyHomePage extends StatelessWidget {
                           EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                       decoration: BoxDecoration(
                           border: Border.all(
-                          color: Colors.purple,
-                          width: 2,
+                        color: Colors.purple,
+                        width: 2,
                       )),
                       padding: EdgeInsets.all(10),
                       child: Text(
@@ -95,6 +93,36 @@ class MyHomePage extends StatelessWidget {
               );
             }).toList(),
           ),
+          Card(
+            elevation: 5,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(children: [
+                TextField(
+                  decoration: InputDecoration(
+                    labelText: 'titulo',
+                  ),
+                ),
+                TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Valor (R\$)',
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                      child: Text(
+                        "Nova transação",
+                        style: TextStyle(color: Colors.purple),
+                      ),
+                      onPressed: () {},
+                    ),
+                  ],
+                )
+              ]),
+            ),
+          )
         ],
       ),
     );
