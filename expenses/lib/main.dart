@@ -1,9 +1,9 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_interpolation_to_compose_strings
 
-import 'dart:ffi';
-
+import 'package:expenses/Utilitarios.dart';
 import 'package:expenses/models/Transaction.dart';
 import 'package:flutter/material.dart';
+
 
 main() => runApp(ExpensesApp());
 
@@ -62,7 +62,7 @@ class MyHomePage extends StatelessWidget {
                       )),
                       padding: EdgeInsets.all(10),
                       child: Text(
-                        tr.value.toString(),
+                        "R\$ ${tr.value.toString()}",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -78,11 +78,12 @@ class MyHomePage extends StatelessWidget {
                           tr.title,
                           style: TextStyle(
                             fontSize: 16,
+                            fontWeight: FontWeight.bold,
                           ),
                           textAlign: TextAlign.left,
                         ),
                         Text(
-                          tr.date.toString(),
+                          Utilitarios.refactorDate(tr.date.toString()),
                           style: TextStyle(
                             color: Color.fromARGB(255, 100, 100, 100),
                           ),
