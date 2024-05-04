@@ -24,6 +24,7 @@ class _TransactionUserState extends State<TransactionUser> {
       value: 300.00,
       date: DateTime.now(),
     ),
+    
   ];
 
  _addTransaction(String title, double value) {
