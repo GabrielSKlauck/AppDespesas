@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_interpolation_to_compose_strings
 
-import 'package:expenses/Utilitarios.dart';
-import 'package:expenses/models/Transaction.dart';
+import 'components/Transaction_user.dart';
 import 'package:flutter/material.dart';
 
 main() => runApp(ExpensesApp());
@@ -16,23 +15,7 @@ class ExpensesApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  final titleController = TextEditingController();
-  final valueController = TextEditingController();
 
-  final _transactions = [
-    Transaction(
-      id: 't1',
-      title: 'Novo tenis',
-      value: 598.98,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Conta de luz',
-      value: 300.00,
-      date: DateTime.now(),
-    ),
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,89 +31,7 @@ class MyHomePage extends StatelessWidget {
               child: Text('Grafico'),
             ),
           ),
-          Column(
-            children: _transactions.map((tr) {
-              return Card(
-                child: Row(
-                  children: [
-                    Container(
-                      margin:
-                          EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                        color: Colors.purple,
-                        width: 2,
-                      )),
-                      padding: EdgeInsets.all(10),
-                      child: Text(
-                        "R\$ ${tr.value.toString()}",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          color: Colors.purple,
-                        ),
-                      ),
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          tr.title,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textAlign: TextAlign.left,
-                        ),
-                        Text(
-                          Utilitarios.refactorDate(tr.date.toString()),
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 100, 100, 100),
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              );
-            }).toList(),
-          ),
-          Card(
-            elevation: 5,
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(children: [
-                TextField(
-                  controller: titleController,
-                  decoration: InputDecoration(
-                    labelText: 'titulo',
-                  ),
-                ),
-                TextField(
-                  controller: valueController,
-                  decoration: InputDecoration(
-                    labelText: 'Valor (R\$)',
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    TextButton(
-                      child: Text(
-                        "Nova transação",
-                        style: TextStyle(color: Colors.purple),
-                      ),
-                      onPressed: () {
-                        print(titleController);
-                        print(valueController);
-                      },
-                    ),
-                  ],
-                )
-              ]),
-            ),
-          )
+          TransactionUser(),
         ],
       ),
     );
